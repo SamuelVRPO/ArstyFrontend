@@ -1,0 +1,16 @@
+<div class="card-container">
+    <div *ngFor="let artwork of artworks">
+        <app-art-card
+            title="{{artwork.title}}"
+            date="{{artwork.date}}"
+            imageUrl="{{artwork._links.thumbnail.href}}"
+            artist="{{artwork.artist}}"
+            method="{{artwork.medium}}"
+            dimensions="{{artwork.dimensions.in.text}}">
+        </app-art-card>
+    </div>
+</div>
+
+<div>
+    <button class="next-button" (click)="loadNextArtworks()">Next</button>
+</div>
