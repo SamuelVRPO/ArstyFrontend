@@ -6,23 +6,40 @@
     padding: 10px;
   }
   
-  .next-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+  .paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .paginator button {
     padding: 12px 24px;
-    background-image: linear-gradient(to right, #0062cc, #0096ff); /* Gradient from darker to lighter blue */
+    background-image: linear-gradient(to right, #0062cc, #0096ff);
     color: white;
-    font-weight: bold; /* Makes the text bold */
+    font-weight: bold;
     border: none;
-    border-radius: 30px; /* Fully rounded corners for a pill-like shape */
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Smooth transitions for interactive effects */
-    z-index: 1000;            /* Ensures it's above other content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
   }
   
-  .next-button:hover {
-    background-image: linear-gradient(to right, #004ba0, #007bff); /* Darker gradient on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
-    transform: scale(1.05);   }
+  .paginator button:hover {
+    background-image: linear-gradient(to right, #004ba0, #007bff);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05); 
+  }
+
+  .paginator button:disabled {
+    background-image: linear-gradient(to right, #ccc, #ddd);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .paginator span {
+    margin: 0 20px;
+    font-size: 16px;
+    font-weight: bold;  
+  }

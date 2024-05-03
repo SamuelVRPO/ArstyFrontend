@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,23 +11,21 @@ import { Artwork } from '../interfaces/artwork';
 
 export class ArtworkService {
 
-  private apiUrl = "https://api.artsy.net/api/artworks"
-  private headers = new HttpHeaders({
-    "X-XAPP-Token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiJmNDY3NzQ3ZS03OWQzLTRkZTctODI5Mi05OWQ4ZjRmNTIyOTkiLCJleHAiOjE3MTQ2ODQ2NTksImlhdCI6MTcxNDA3OTg1OSwiYXVkIjoiZjQ2Nzc0N2UtNzlkMy00ZGU3LTgyOTItOTlkOGY0ZjUyMjk5IiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjY2MmFjODczNDBiZWU5MDAwZTEzOGY3ZiJ9.WRcbZ7jh7SMpl49EIydoWEMT8H2rjq73wiZssX-8Ev8"
-  })
+  private apiUrl = "http://localhost:5001/artworks/get-paginated-artworks/"
 
   constructor(private http: HttpClient) { }
 
   getArtworks(): Observable<ArtworkServerResponse> {
     return this.http.get<ArtworkServerResponse>(this.apiUrl, {
-      headers: this.headers,
       responseType: 'json'
     });
   }
 
-  getNextArtworks(nextUrl: string): Observable<ArtworkServerResponse> {
-    return this.http.get<ArtworkServerResponse>(nextUrl, {
-      headers: this.headers,
+  getNextArtworks(page: number): Observable<ArtworkServerResponse> {
+    const params = new HttpParams().set('page', page.toString())
+
+    return this.http.get<ArtworkServerResponse>(this.apiUrl, {
+      params,
       responseType: 'json'
     });
   }

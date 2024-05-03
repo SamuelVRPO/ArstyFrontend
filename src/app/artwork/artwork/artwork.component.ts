@@ -3,6 +3,7 @@ import { ArtCardComponent } from '../../art-card/art-card/art-card.component';
 import { ArtworkService } from '../../services/artwork.service';
 import { CommonModule } from '@angular/common';
 import { Artwork } from '../../interfaces/artwork';
+import { ArtistService } from '../../services/artist.service';
 
 @Component({
   selector: 'app-artwork',
@@ -13,7 +14,7 @@ import { Artwork } from '../../interfaces/artwork';
 })
 export class ArtworkComponent implements OnInit{
   artworks: Artwork[] = [];
-  nextUrl: string = '';
+  page: number;
 
   constructor(private artworkService: ArtworkService) {}
 
@@ -23,16 +24,22 @@ export class ArtworkComponent implements OnInit{
 
   loadArtworks(): void {
     this.artworkService.getArtworks().subscribe(artworkServerResponse => {
-      this.nextUrl = artworkServerResponse._links.next.href;
-      this.artworks = artworkServerResponse._embedded.artworks;
+      this.artworks = artworkServerResponse.results;
+      this.page = 1
     })
   }
 
   loadNextArtworks(): void {
-    this.artworkService.getNextArtworks(this.nextUrl).subscribe(artworkServerResponse => {
-      this.nextUrl = artworkServerResponse._links.next.href;
-      this.artworks = artworkServerResponse._embedded.artworks;
+    this.artworkService.getNextArtworks(this.page + 1).subscribe(artworkServerResponse => {
+      this.artworks = artworkServerResponse.results;
+      this.page = this.page + 1
     })
   }
 
+  loadPrevArtworks(): void {
+    this.artworkService.getNextArtworks(this.page - 1).subscribe(artworkServerResponse => {
+      this.artworks = artworkServerResponse.results;
+      this.page = this.page + 1
+    })
+  }
 }

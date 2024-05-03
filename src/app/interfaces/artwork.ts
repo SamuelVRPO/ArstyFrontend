@@ -1,9 +1,11 @@
+import { Artist } from "./artist";
+
 export interface Artwork {
     id: string;
     title: string;
     medium: string;
     date: string;
-    artist: string;
+    artists: Artist[];
     dimensions: {
       in: {
         text: string;
