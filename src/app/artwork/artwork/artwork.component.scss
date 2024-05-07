@@ -1,3 +1,9 @@
+.artwork-page {
+  display: flex;
+  justify-content: space-between; /* Aligns children (list and filter) in a row with space in between */
+  padding: 20px;
+}
+
 .card-container {
     display: flex;
     flex-direction: column;

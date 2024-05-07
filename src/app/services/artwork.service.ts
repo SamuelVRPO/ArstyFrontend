@@ -11,21 +11,36 @@ import { Artwork } from '../interfaces/artwork';
 
 export class ArtworkService {
 
-  private apiUrl = "http://localhost:5001/artworks/get-paginated-artworks/"
+  private apiUrl = "http://localhost:5001/artworks";
 
   constructor(private http: HttpClient) { }
 
   getArtworks(): Observable<ArtworkServerResponse> {
-    return this.http.get<ArtworkServerResponse>(this.apiUrl, {
+    const url = `${this.apiUrl}/get-paginated-artworks/`;
+    return this.http.get<ArtworkServerResponse>(url, {
       responseType: 'json'
     });
   }
 
   getNextArtworks(page: number): Observable<ArtworkServerResponse> {
+    const url = `${this.apiUrl}/get-paginated-artworks/`;
     const params = new HttpParams().set('page', page.toString())
-
-    return this.http.get<ArtworkServerResponse>(this.apiUrl, {
+    return this.http.get<ArtworkServerResponse>(url, {
       params,
+      responseType: 'json'
+    });
+  }
+
+  getArtworkById(id: string): Observable<Artwork> {
+    const url = `${this.apiUrl}/get-artwork-id/${id}`;
+    return this.http.get<Artwork>(url, {
+      responseType: 'json'
+    });
+  }
+
+  getArtworksByCategory(category: string): Observable<ArtworkServerResponse> {
+    const url = `${this.apiUrl}/get-artworks-category/${category}`;
+    return this.http.get<ArtworkServerResponse>(url, {
       responseType: 'json'
     });
   }

@@ -4,5 +4,5 @@ export interface ArtworkServerResponse {
     count: number;
     next: boolean;
     previous: boolean;
-    results: Artwork[]
+    results: Artwork[];
 }

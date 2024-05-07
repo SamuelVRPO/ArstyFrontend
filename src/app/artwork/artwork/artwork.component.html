@@ -1,16 +1,40 @@
-<div class="card-container">
-    <div *ngFor="let artwork of artworks">
-        <app-art-card
-            title="{{artwork.title}}"
-            date="{{artwork.date}}"
-            imageUrl="{{artwork._links.thumbnail.href}}"
-            artists="{{artwork.artists[0].name}}"
-            method="{{artwork.medium}}"
-            dimensions="{{artwork.dimensions.in.text}}">
-        </app-art-card>
+<div class="artwork-page">
+    <div class="artwork-list">
+        <div class="card-container">
+            <div *ngIf="filteredArtworks.length > 0">
+                <div *ngFor="let filteredArtwork of filteredArtworks">
+                    <app-art-card
+                        *ngIf="filteredArtwork.artists.length > 0 && filteredArtwork.dimensions.in.text"
+                        id="{{filteredArtwork.id}}"
+                        title="{{filteredArtwork.title}}"
+                        date="{{filteredArtwork.date}}"
+                        imageUrl="{{filteredArtwork._links.thumbnail.href}}"
+                        artists="{{filteredArtwork.artists[0].name}}"
+                        method="{{filteredArtwork.medium}}"
+                        dimensions="{{filteredArtwork.dimensions.in.text}}">
+                    </app-art-card>
+                </div>
+            </div>
+            <div *ngIf="filteredArtworks.length === 0">
+                <div *ngFor="let artwork of artworks">
+                    <app-art-card
+                        id="{{artwork.id}}"
+                        title="{{artwork.title}}"
+                        date="{{artwork.date}}"
+                        imageUrl="{{artwork._links.thumbnail.href}}"
+                        artists="{{artwork.artists[0].name}}"
+                        method="{{artwork.medium}}"
+                        dimensions="{{artwork.dimensions.in.text}}">
+                    </app-art-card>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="artwork-filter">
+        <app-artwork-filter (filteredArtworks)="onArtworksFiltered($event)"></app-artwork-filter>
+    </div>
 
+</div>
 <div class="paginator">
     <button (click)="loadPrevArtworks()">Prev</button>
     <span>{{page}}</span>

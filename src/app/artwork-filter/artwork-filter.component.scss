@@ -1,0 +1,39 @@
+/* artwork-filter.component.css */
+.filter-container {
+    position: fixed;  /* Keeps the filter fixed during scrolling */
+    top: 80px;        /* Adjust this value based on your header height */
+    right: 20px;      /* Padding from the right edge of the viewport */
+    width: 300px;     /* Fixed width for the filter box */
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 100;     /* Ensure it's above other content but below modal overlays if any */
+  }
+  
+  
+  .filter-container form {
+    display: flex;
+    flex-direction: column;  /* Aligns children (form controls) vertically */
+    align-items: flex-start; /* Aligns form controls to the start of the flex container */
+  }
+  
+  .filter-container input, 
+  .filter-container button {
+    width: 100%;            /* Makes inputs and button take the full container width */
+    padding: 8px;
+    margin-bottom: 10px;    /* Adds space between each control */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .filter-container button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .filter-container button:hover {
+    background-color: #0056b3;
+  }
+  

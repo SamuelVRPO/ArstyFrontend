@@ -5,6 +5,7 @@ export interface Artwork {
     title: string;
     medium: string;
     date: string;
+    category: string;
     artists: Artist[];
     dimensions: {
       in: {

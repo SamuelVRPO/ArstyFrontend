@@ -4,15 +4,17 @@ import { ArtworkService } from '../../services/artwork.service';
 import { CommonModule } from '@angular/common';
 import { Artwork } from '../../interfaces/artwork';
 import { ArtistService } from '../../services/artist.service';
+import { ArtworkFilterComponent } from '../../artwork-filter/artwork-filter.component';
 
 @Component({
   selector: 'app-artwork',
   standalone: true,
-  imports: [ArtCardComponent, CommonModule],
+  imports: [ArtCardComponent, CommonModule, ArtworkFilterComponent],
   templateUrl: './artwork.component.html',
   styleUrl: './artwork.component.scss'
 })
 export class ArtworkComponent implements OnInit{
+  filteredArtworks: Artwork[] = [];
   artworks: Artwork[] = [];
   page: number;
 
@@ -39,7 +41,12 @@ export class ArtworkComponent implements OnInit{
   loadPrevArtworks(): void {
     this.artworkService.getNextArtworks(this.page - 1).subscribe(artworkServerResponse => {
       this.artworks = artworkServerResponse.results;
-      this.page = this.page + 1
+      this.page = this.page - 1
     })
+  }
+
+  onArtworksFiltered(artworks: Artwork[]) {
+    this.filteredArtworks = artworks;
+    console.log("filtered:", this.filteredArtworks)
   }
 }

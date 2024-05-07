@@ -1,0 +1,9 @@
+<div class="filter-container">
+    <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+        <input type="text" formControlName="artist" placeholder="Artist">
+        <input type="text" formControlName="category" placeholder="Category">
+        <input type="text" formControlName="period" placeholder="Period">
+        <input type="text" formControlName="genre" placeholder="Genre">
+        <button type="submit">Filter</button>
+    </form>
+</div>
