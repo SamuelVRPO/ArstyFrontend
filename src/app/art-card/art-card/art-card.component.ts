@@ -15,6 +15,7 @@ export class ArtCardComponent{
   @Input() id: string;
   @Input() title: string;
   @Input() date: string;
+  @Input() category: string;
   @Input() imageUrl: string;
   @Input() artists: string;
   @Input() method: string;

@@ -5,7 +5,7 @@ import { ArtworkDetailsComponent } from './artwork-details/artwork-details.compo
 export const routes: Routes = [
     { path: '', component: ArtworkComponent},
     { path: 'artwork', component: ArtworkComponent},
-    { path: 'artwork/:id', component: ArtworkDetailsComponent},
+    { path: 'artwork/:id/:cat/:artist', component: ArtworkDetailsComponent},
     { path: '', redirectTo: '/artwork', pathMatch: 'full' }
 ];
 

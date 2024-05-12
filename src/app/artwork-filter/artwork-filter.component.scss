@@ -21,6 +21,7 @@
   .filter-container button {
     width: 100%;            /* Makes inputs and button take the full container width */
     padding: 8px;
+    padding-right: 0;
     margin-bottom: 10px;    /* Adds space between each control */
     font-size: 16px;
     border: 1px solid #ccc;
@@ -35,5 +36,15 @@
   
   .filter-container button:hover {
     background-color: #0056b3;
+  }
+
+  .year-range {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .year-range input {
+    flex: 1; /* Allows each input to take up equal space */
   }
   

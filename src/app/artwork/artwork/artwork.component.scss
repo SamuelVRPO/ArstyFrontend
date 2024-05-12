@@ -49,3 +49,39 @@
     font-size: 16px;
     font-weight: bold;  
   }
+
+  .search-container {
+    position: fixed;
+    display: flex;
+    justify-content: center; /* Centers the search bar within the container */
+    margin: 20px auto; /* Adds top and bottom margin and auto margins on the sides for centering */
+    width: 100%; /* Ensures the container takes the full width available to it */
+  }
+  
+  .search-container input {
+    width: 100%; /* Takes full width of its container */
+    max-width: 500px; /* Limits the maximum width to 500px */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .search-container button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #007bff; /* Primary color for the button */
+    color: white; /* Text color for the button */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right side only */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.search-container button:hover {
+    background-color: #0056b3; /* Darker shade on hover for better interaction feedback */
+}
+
+.search-container button i {
+    vertical-align: middle; /* Centers the icon vertically within the button */
+}

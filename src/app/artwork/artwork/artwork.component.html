@@ -1,3 +1,7 @@
+<div class="search-container">
+    <input type="text" placeholder="Search artworks...">
+    <button (click)="onSearch()"><i class="fas fa-search"></i></button>
+</div>
 <div class="artwork-page">
     <div class="artwork-list">
         <div class="card-container">
@@ -8,6 +12,7 @@
                         id="{{filteredArtwork.id}}"
                         title="{{filteredArtwork.title}}"
                         date="{{filteredArtwork.date}}"
+                        category="{{filteredArtwork.category}}"
                         imageUrl="{{filteredArtwork._links.thumbnail.href}}"
                         artists="{{filteredArtwork.artists[0].name}}"
                         method="{{filteredArtwork.medium}}"
@@ -21,6 +26,7 @@
                         id="{{artwork.id}}"
                         title="{{artwork.title}}"
                         date="{{artwork.date}}"
+                        category="{{artwork.category}}"
                         imageUrl="{{artwork._links.thumbnail.href}}"
                         artists="{{artwork.artists[0].name}}"
                         method="{{artwork.medium}}"
@@ -30,6 +36,7 @@
             </div>
         </div>
     </div>
+
     <div class="artwork-filter">
         <app-artwork-filter (filteredArtworks)="onArtworksFiltered($event)"></app-artwork-filter>
     </div>

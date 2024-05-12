@@ -1,4 +1,4 @@
-<div *ngIf="artwork">
+<div *ngIf="artwork" class="background">
     <div class="artwork-details">
         <div class="artwork-image">
           <img [src]="artwork._links.thumbnail.href" alt="Image of {{ artwork.title }}">
@@ -8,8 +8,40 @@
           <p><strong>Artist:</strong> {{ artwork.artists[0].name }}</p>
           <p><strong>Date:</strong> {{ artwork.date }}</p>
           <p><strong>Method:</strong> {{ artwork.medium }}</p>
+          <p><strong>Category:</strong> {{ artwork.category }}</p>
           <p><strong>Dimensions:</strong> {{ artwork.dimensions.in.text }}</p>
         </div>
       </div>
+    <h1 class="sim-art">Similar Artworks by Category</h1>
+    <div *ngIf="relatedArtworks.length" class="horizontal-scroll">
+        <div *ngFor="let artwork of relatedArtworks" class="scroll-item">
+            <app-art-card
+            id="{{artwork.id}}"
+            title="{{artwork.title}}"
+            date="{{artwork.date}}"
+            category="{{artwork.category}}"
+            imageUrl="{{artwork._links.thumbnail.href}}"
+            artists="{{artwork.artists[0].name}}"
+            method="{{artwork.medium}}"
+            dimensions="{{artwork.dimensions.in.text}}">
+        </app-art-card>
+        </div>
+      </div>
+
+      <h1 class="sim-art">Similar Artworks by Artist</h1>
+      <div *ngIf="relatedArtist.length" class="horizontal-scroll">
+          <div *ngFor="let artwork of relatedArtist" class="scroll-item">
+              <app-art-card
+              id="{{artwork.id}}"
+              title="{{artwork.title}}"
+              date="{{artwork.date}}"
+              category="{{artwork.category}}"
+              imageUrl="{{artwork._links.thumbnail.href}}"
+              artists="{{artwork.artists[0].name}}"
+              method="{{artwork.medium}}"
+              dimensions="{{artwork.dimensions.in.text}}">
+          </app-art-card>
+          </div>
+        </div>
 </div>
 

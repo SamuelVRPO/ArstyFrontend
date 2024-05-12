@@ -2,7 +2,10 @@
     <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
         <input type="text" formControlName="artist" placeholder="Artist">
         <input type="text" formControlName="category" placeholder="Category">
-        <input type="text" formControlName="period" placeholder="Period">
+        <div class="year-range">
+            <input type="number" formControlName="periodMin" placeholder="Min Year">
+            <input type="number" formControlName="periodMax" placeholder="Max Year">
+        </div>
         <input type="text" formControlName="genre" placeholder="Genre">
         <button type="submit">Filter</button>
     </form>

@@ -44,4 +44,18 @@ export class ArtworkService {
       responseType: 'json'
     });
   }
+
+  getArtworksByArtist(artist: string): Observable<ArtworkServerResponse> {
+    const url = `${this.apiUrl}/get-artworks-by-artist-name/${artist}`;
+    return this.http.get<ArtworkServerResponse>(url, {
+      responseType: 'json'
+    })
+  }
+
+  getArtworksByPeriod(periodMin: string, periodMax: string): Observable<ArtworkServerResponse> {
+    const url = `${this.apiUrl}/get-artworks-by-period/${periodMin}-${periodMax}`;
+    return this.http.get<ArtworkServerResponse>(url, {
+      responseType: 'json'
+    })
+  }
 }
