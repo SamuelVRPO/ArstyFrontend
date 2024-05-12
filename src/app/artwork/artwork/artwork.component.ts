@@ -5,17 +5,19 @@ import { CommonModule } from '@angular/common';
 import { Artwork } from '../../interfaces/artwork';
 import { ArtistService } from '../../services/artist.service';
 import { ArtworkFilterComponent } from '../../artwork-filter/artwork-filter.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-artwork',
   standalone: true,
-  imports: [ArtCardComponent, CommonModule, ArtworkFilterComponent],
+  imports: [ArtCardComponent, CommonModule, ArtworkFilterComponent, FormsModule],
   templateUrl: './artwork.component.html',
   styleUrl: './artwork.component.scss'
 })
 export class ArtworkComponent implements OnInit{
   filteredArtworks: Artwork[] = [];
   artworks: Artwork[] = [];
+  keyword: string = '';
   page: number;
 
   constructor(private artworkService: ArtworkService) {}
@@ -50,8 +52,8 @@ export class ArtworkComponent implements OnInit{
     console.log("filtered:", this.filteredArtworks)
   }
 
-  onSearch(keyword: string): void {
-    this.artworkService.getArtworkByKeyword(keyword).subscribe(artworkServerResponse => {
+  onSearch(): void {
+    this.artworkService.getArtworksByKeyword(this.keyword).subscribe(artworkServerResponse => {
        this.filteredArtworks = artworkServerResponse.results
     })
   }
