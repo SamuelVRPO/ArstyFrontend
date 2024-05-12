@@ -49,13 +49,20 @@ export class ArtworkService {
     const url = `${this.apiUrl}/get-artworks-by-artist-name/${artist}`;
     return this.http.get<ArtworkServerResponse>(url, {
       responseType: 'json'
-    })
+    });
   }
 
   getArtworksByPeriod(periodMin: string, periodMax: string): Observable<ArtworkServerResponse> {
     const url = `${this.apiUrl}/get-artworks-by-period/${periodMin}-${periodMax}`;
     return this.http.get<ArtworkServerResponse>(url, {
       responseType: 'json'
-    })
+    });
+  }
+
+  getArtworksByKeyword(keyword: string): Observable<ArtworkServerResponse> {
+    const url = `${this.apiUrl}/get-artworks-by-keyword/${keyword}`;
+    return this.http.get<ArtworkServerResponse>(url, {
+      responseType: 'json'
+    });
   }
 }

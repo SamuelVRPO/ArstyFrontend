@@ -50,9 +50,9 @@ export class ArtworkComponent implements OnInit{
     console.log("filtered:", this.filteredArtworks)
   }
 
-  onSearch(): void {
-    this.artworkService.getNextArtworks(Math.floor(Math.random() * 20)).subscribe(artworkServerResponse => {
-       this.filteredArtworks = artworkServerResponse.results.slice(0, 6);
+  onSearch(keyword: string): void {
+    this.artworkService.getArtworkByKeyword(keyword).subscribe(artworkServerResponse => {
+       this.filteredArtworks = artworkServerResponse.results
     })
   }
 }
